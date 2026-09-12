@@ -1,0 +1,14 @@
+[project]
+name = "cs6180-team10-main"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "claude-agent-sdk>=0.1.53",
+    "matplotlib>=3.10.8",
+    "openrouter>=0.9.1",
+    "pandas>=3.0.2",
+    "pymupdf>=1.27.2.2",
+    "tqdm>=4.67.3",
+]
