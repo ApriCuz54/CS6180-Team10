@@ -4,6 +4,12 @@ A systematic empirical study testing when LLM self-correction through critique-a
 
 **Authors:** Aditya Chatterjee, Shrey Babulal Patel, Manav Kamleshbhai Dhamani
 
+> **Scope of committed results.** The framework is built to run MATH500, HotpotQA and
+> HumanEval across multiple seeds, but the results committed to this repo are **MATH-500
+> only, single-seed (seed 42)**, produced by the notebooks in `notebooks/`. The HotpotQA
+> and HumanEval task adapters are implemented but have not yet been exercised, and the
+> multi-seed sweep in `runner.py` was not run for the committed numbers.
+
 ## Code Structure Overview
 
 ```
@@ -41,18 +47,20 @@ CS6180-Team10-main/
 |   |-- hotpot_dev_distractor_v1.json
 |   |-- HumanEval.jsonl
 |
-|-- results/                        # Raw result CSVs (3 runs x 4 conditions)
-|   |-- math500.csv
-|   |-- hotpotqa.csv
-|   |-- humaneval.csv
+|-- Results_Math/                   # Committed results: MATH-500 only, single-seed (seed 42)
+|   |-- math500_no_correction.csv
+|   |-- math500_same_model.csv           # same-model, targeted critique
+|   |-- math500_same_model_generic.csv   # same-model, generic critique (ablation)
+|   |-- math500_cross_model.csv          # cross-model (gpt-4o) critique
+|   |-- math500_sycophancy_same_model.csv
+|   |-- math500_sycophancy_cross_model.csv
+|   |-- fig1_accuracy.png ... fig6_sycophancy.png   # generated figures
 |
 |-- notebooks/
-|   |-- MathBenchmark_GenAI.ipynb    # Math benchmark notebook experiments
+|   |-- MathBenchmark_GenAI.ipynb    # Math benchmark experiments (produced the committed results)
 |   |-- Shared_pipeline_test.ipynb   # Shared pipeline testing notebook
 |
 |-- pipeline.py                     # Notebook-friendly wrapper (init_client, run_pipeline, summarize)
-|-- main.py                         # Simple entry point
-|-- LLM_correction_paper.tex        # Paper source (NeurIPS format)
 |-- requirements.txt                # Python dependencies
 |-- README.md                       # This file
 ```

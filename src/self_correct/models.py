@@ -23,7 +23,6 @@ class OpenAICompatClient:
         self._client = OpenAI(base_url=self.base_url, api_key=self.api_key)
 
     def complete(self, prompt: str, model: str, max_tokens: int = 512) -> str:
-        del max_tokens
         for attempt in range(self.retries):
             try:
                 resp = self._client.chat.completions.create(
